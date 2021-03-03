@@ -22,7 +22,7 @@ module PuntoPagos
                          Base64.encode64(OpenSSL::HMAC.digest('sha512', @@config.puntopagos_secret, string)).chomp
                        end
 
-      "PP #{@@config.puntopagos_key}:#{encoded_string}"
+      "PP #{@@config.puntopagos_key.gsub('\n', '')}:#{encoded_string.gsub('\n', '')}"
     end
   end
   # rubocop:enable Layout/LineLength
