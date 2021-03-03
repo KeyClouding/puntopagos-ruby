@@ -19,8 +19,8 @@ module PuntoPagos
       # encoded_string = if string.length <= 40
       #                    Base64.strict_encode64(OpenSSL::HMAC.digest('sha1', @@config.puntopagos_secret, string))
       #                  else
-                         instance = OpenSSL::HMAC.new(@@config.puntopagos_secret, OpenSSL::Digest.new('sha256'))
-                         encoded_string = Base64.strict_encode64(instance.digest)
+                         instance = OpenSSL::HMAC.new(@@config.puntopagos_secret, OpenSSL::Digest.new('sha256').squish).squish
+                         encoded_string = Base64.strict_encode64(instance.digest.squish).squish
                       #  end
 
       "PP " + @@config.puntopagos_key + ":" + encoded_string
