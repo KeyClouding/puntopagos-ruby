@@ -19,7 +19,7 @@ module PuntoPagos
       # encoded_string = if string.length <= 40
       #                    Base64.strict_encode64(OpenSSL::HMAC.digest('sha1', @@config.puntopagos_secret, string))
       #                  else
-                         encoded_string = Base64.strict_encode64(OpenSSL::HMAC.digest('sha256', @@config.puntopagos_secret, string))
+                         encoded_string = Base64.urlsafe_encode64(OpenSSL::HMAC.digest('sha256', @@config.puntopagos_secret, string))
                       #  end
 
       "PP " + @@config.puntopagos_key + ":" + encoded_string
