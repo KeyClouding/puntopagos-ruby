@@ -24,7 +24,7 @@ module PuntoPagos
       Rails.logger.info "Generated Message: #{message}"
       Rails.logger.info "Generated Signature #{signature}"
       @verification = PuntoPagos::Verification.new(@env)
-      (signature == pp_signature(headers)) and (@verification.verify(params["token"], params["trx_id"], params["monto"].to_i.to_s + ".00"))
+      (signature == pp_signature(headers)) and (@verification.verify(params["token"], params["trx_id"], "#{params["monto"].to_i}.00"))
 
     end
 
@@ -44,8 +44,8 @@ module PuntoPagos
     #
     # Returns a message as a String.
     def create_message token, trx_id, amount, timestamp
-      amount = amount.to_i.to_s + ".00"
-      @@function + "\n" + token + "\n" + trx_id + "\n" + amount + "\n" + timestamp
+      amount = "#{amount.to_i}.00"
+      "#{@@function}\n#{token}\n#{trx_id}\n#{amount}\n#{timestamp}"
     end
 
     # Internal: Gets the signature out of the Autorizacion HTTP Header.

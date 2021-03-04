@@ -40,7 +40,7 @@ module PuntoPagos
 private
 
     def create_message trx_id, amount, timestamp
-      @@function + "\n" + trx_id + "\n" + amount + "\n" + timestamp
+      "#{@@function}\n#{trx_id}\n#{amount}\n#{timestamp}"
     end
 
     def create_data trx_id, amount, payment_type = nil

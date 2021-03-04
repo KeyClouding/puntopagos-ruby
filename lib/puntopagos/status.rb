@@ -29,7 +29,7 @@ module PuntoPagos
     private
 
     def create_message token, trx_id, amount, timestamp
-      @@function + "\n" + token + "\n" + trx_id + "\n" + amount + "\n" + timestamp
+      "#{@@function}\n#{token}\n#{trx_id}\n#{amount}\n#{timestamp}"
     end
 
     def get_timestamp
