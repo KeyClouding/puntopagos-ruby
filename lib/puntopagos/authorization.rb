@@ -2,10 +2,11 @@ require 'base64'
 require 'openssl'
 
 module PuntoPagos
+  
   # Public: This class manage the signing of a message using
   # the secret and api-key defined in puntopagos.yml
   class Authorization
-    def initialize(env = nil)
+    def initialize env = nil
       @@config ||= PuntoPagos::Config.new(env)
     end
 
