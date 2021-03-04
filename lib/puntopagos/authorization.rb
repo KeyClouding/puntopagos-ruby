@@ -14,9 +14,8 @@ module PuntoPagos
     # string - The String to be signed
     # Returns the signed String.
     def sign(string)
-      encoded_string = Base64.strict_encode64(string)
-
-      "PP #{@@config.puntopagos_key}:#{encoded_string}"
+      encoded_string = Base64.encode64(OpenSSL::HMAC.digest('sha1',@@config.puntopagos_secret, string)).chomp
+      "PP "+@@config.puntopagos_key+":"+ encoded_string
     end
   end
 end
