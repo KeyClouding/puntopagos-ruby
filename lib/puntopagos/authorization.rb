@@ -20,7 +20,7 @@ module PuntoPagos
                          ).chomp
                        else
                          Base64.strict_encode64(
-                           OpenSSL::HMAC.digest('sha512', @@config.puntopagos_secret, string)
+                           OpenSSL::HMAC.digest('sha256', @@config.puntopagos_secret, string)
                          ).chomp
                        end
 
