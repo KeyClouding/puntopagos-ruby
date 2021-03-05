@@ -9,6 +9,7 @@ module PuntoPagos
 
     # TODO validate JSON
     def success?
+      puts "PPRUBY RESPONSE SUCCESS =====> #{@@response.inspect}"
       puts "#{@@response['respuesta']}"
       @@response["respuesta"] == "00"
     end
