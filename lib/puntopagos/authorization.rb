@@ -8,6 +8,7 @@ module PuntoPagos
   class Authorization
     def initialize env = nil
       @@config ||= PuntoPagos::Config.new(env)
+      puts "PPRUBY RESPONSE Authorization::initialize =====> #{@@config.inspect}"
     end
 
     # Public: Signs a string using the secret and api-key defined in puntopagos.yml
