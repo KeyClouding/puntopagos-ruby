@@ -9,6 +9,7 @@ module PuntoPagos
     end
 
     def call_api data, path, method, signature, timestamp
+      puts "PPRUBY RESPONSE Executioner::call_api =====> #{signature.inspect}"
       #hack fix: JSON.unparse doesn't work in Rails 2.3.5; only {}.to_json does..
       headers          = set_headers(signature, timestamp)
       #api_request_data = JSON.unparse(data) rescue data.to_json
@@ -23,6 +24,7 @@ module PuntoPagos
     private
 
     def set_headers signature, timestamp
+      puts "PPRUBY RESPONSE Executioner::set_headers =====> #{signature.inspect}"
       headers = {
         'User-Agent'     => "puntopagos-ruby-#{PuntoPagos::VERSION}",
         'Accept'         => 'application/json',
