@@ -32,6 +32,11 @@ module PuntoPagos
       signature = authorization.sign(message)
       executioner = PuntoPagos::Executioner.new(@env)
 
+      puts "PPRUBY RESPONSE Request::create =====> #{message.inspect}"
+      puts "PPRUBY RESPONSE Request::create 1 =====> #{authorization.inspect}"
+      puts "PPRUBY RESPONSE Request::create 2 =====> #{signature.inspect}"
+      puts "PPRUBY RESPONSE Request::create 3 =====> #{executioner.inspect}"
+
       response_data = executioner.call_api(data, @@function, :post, signature, timestamp)
       PuntoPagos::Response.new(response_data, @env)
     end
